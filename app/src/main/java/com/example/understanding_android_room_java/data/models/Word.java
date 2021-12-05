@@ -13,14 +13,10 @@ public final class Word {
 
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name = "id")
-    private final String mWordId;
-
     @ColumnInfo(name = "word")
     private String mWord;
 
-    public Word(@NonNull String wordId, @NonNull String word) {
-        this.mWordId = wordId;
+    public Word( @NonNull String word) {
         this.mWord = word;
     }
 
@@ -31,16 +27,16 @@ public final class Word {
     @Override
     public boolean equals(@Nullable Object obj) {
         return obj instanceof Word
-                && this.mWordId.equals(((Word) obj).mWordId);
+                && this.mWord.equals(((Word) obj).mWord);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(mWordId);
+        return Objects.hashCode(mWord);
     }
 
     @Override
     protected Object clone() {
-        return new Word(mWordId, mWord);
+        return new Word(mWord);
     }
 }

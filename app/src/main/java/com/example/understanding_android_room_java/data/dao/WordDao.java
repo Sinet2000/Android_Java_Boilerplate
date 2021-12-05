@@ -25,6 +25,6 @@ public interface WordDao {
     @Query("SELECT * FROM word_table ORDER BY word ASC")
     LiveData<List<Word>> getAlphabetizedWords();
 
-    @Query("SELECT * FROM word_table WHERE id = :wordId")
-    LiveData<Word> getWord(String wordId);
+    @Query("SELECT * FROM word_table WHERE word = :word")
+    LiveData<Word> getWord(String word);
 }

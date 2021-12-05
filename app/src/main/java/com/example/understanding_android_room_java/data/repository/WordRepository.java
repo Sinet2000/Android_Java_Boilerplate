@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 import com.example.understanding_android_room_java.data.AppDatabase;
 import com.example.understanding_android_room_java.data.dao.WordDao;
 import com.example.understanding_android_room_java.data.models.Word;
+import com.example.understanding_android_room_java.ui.AppExecutors;
 
 import java.util.List;
 
@@ -38,9 +39,7 @@ public class WordRepository {
     }
 
     public void insert(Word word) {
-        A
-        AppDatabase.databaseWriteExecutor.execute(() -> {
-            mWordDao.insert(word);
-        });
+        AppExecutors.getInstance().getDiskIO().execute(() ->
+                wordDao.insert(word));
     }
 }

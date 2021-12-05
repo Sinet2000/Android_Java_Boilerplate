@@ -22,7 +22,7 @@ public class WordListViewModel extends ViewModel {
         this.words = this.wordRepository.getWords();
     }
 
-    void insert(Word word) {
+    public void insert(Word word) {
         wordRepository.insert(word);
     }
 }

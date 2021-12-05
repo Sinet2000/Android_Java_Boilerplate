@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.understanding_android_room_java.activities.NewWordActivity;
 import com.example.understanding_android_room_java.adapters.WordListAdapter;
 import com.example.understanding_android_room_java.data.models.Word;
 import com.example.understanding_android_room_java.utilities.InjectorUtils;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         // Add an observer on the LiveData returned by getAlphabetizedWords.
         // The onChanged() method fires when the observed data changes and the activity is
         // in the foreground.
-        subsribeUi(adapter);
+        subscribeUi(adapter);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> {
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void subsribeUi(ListAdapter adapter) {
+    private void subscribeUi(ListAdapter adapter) {
         this.mWordViewModel.words.observe(this, words -> {
             if (words != null) {
                 adapter.submitList(words);
